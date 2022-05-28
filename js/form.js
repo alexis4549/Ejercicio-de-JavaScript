@@ -32,7 +32,19 @@ function crearTabla(paciente1)
     trpaciente.appendChild(crearTD(paciente1.gordura,"info-gordura"));
     trpaciente.appendChild(crearTD(paciente1.imc,"info-imc"));
     return trpaciente;
-}   
+}
+
+function validarIngresos(paciente1)
+{
+    if(paciente1.nombre == "" || paciente1.peso == "" || paciente1.altura == "" || paciente1.gordura == "")
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 function agregarPaciente(event)
 {
@@ -41,11 +53,28 @@ function agregarPaciente(event)
     //EXTRAEMOS LOS DATOS QUE NECESITAMOS DE HTML
     var form = document.querySelector("#form-datos");    
     var tabla = document.querySelector("#tabla-pacientes");
-
+    var mensaje = document.querySelector(".mensaje-error");
     var paciente1 = new paciente(form.nombre.value,form.peso.value,form.altura.value,form.gordura.value,calcularIMC(form.peso.value,form.altura.value))
+    
+    if(!validarIngresos(paciente1))
+    {
+        mensaje.textContent = "DEBE RELLENAR TODOS LOS CAMPOS!";
+        return;
+    }
+
     var trpaciente = crearTabla(paciente1);
-    tabla.appendChild(trpaciente);
-    form.reset();
+
+    if(validarPeso(paciente1.peso)&&validarAltura(paciente1.altura))
+    {
+        tabla.appendChild(trpaciente);
+        form.reset();
+        mensaje.textContent = "";
+    }
+    else
+    {
+        mensaje.textContent = "PESO O ALTURA INVALIDOS!";
+    }
+    
 }
 
 boton.addEventListener("click",agregarPaciente);
