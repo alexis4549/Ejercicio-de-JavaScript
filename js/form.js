@@ -34,6 +34,13 @@ function crearTabla(paciente1)
     return trpaciente;
 }
 
+function asociarTabla(trpaciente)
+{
+    var tabla = document.querySelector("#tabla-pacientes");
+    tabla.appendChild(trpaciente);
+
+}
+
 function validarIngresos(paciente1)
 {
     if(paciente1.nombre == "" || paciente1.peso == "" || paciente1.altura == "" || paciente1.gordura == "")
@@ -52,7 +59,6 @@ function agregarPaciente(event)
 
     //EXTRAEMOS LOS DATOS QUE NECESITAMOS DE HTML
     var form = document.querySelector("#form-datos");    
-    var tabla = document.querySelector("#tabla-pacientes");
     var mensaje = document.querySelector(".mensaje-error");
     var paciente1 = new paciente(form.nombre.value,form.peso.value,form.altura.value,form.gordura.value,calcularIMC(form.peso.value,form.altura.value))
     
@@ -62,11 +68,9 @@ function agregarPaciente(event)
         return;
     }
 
-    var trpaciente = crearTabla(paciente1);
-
     if(validarPeso(paciente1.peso)&&validarAltura(paciente1.altura))
     {
-        tabla.appendChild(trpaciente);
+        asociarTabla(crearTabla(paciente1));
         form.reset();
         mensaje.textContent = "";
     }

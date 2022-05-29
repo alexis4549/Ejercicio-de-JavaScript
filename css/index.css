@@ -51,6 +51,13 @@ section h2{
 	margin-bottom: .5em;
 }
 
+#input-filtrar
+{
+	width: 300px;
+	height: 25px;
+	margin-bottom: 25px;
+}
+
 table{
 	width: 100%;
 	margin-bottom : .5em;
@@ -138,4 +145,15 @@ button[disabled=disabled], button:disabled {
 .validarValores
 {
 	background-color: red;
+}
+
+.fadeOut
+{
+	opacity: 0;
+	transition: 0.5s;
+}
+
+.invisible
+{
+	display: none;	
 }

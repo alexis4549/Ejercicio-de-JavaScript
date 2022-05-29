@@ -18,6 +18,7 @@
 		<main>
 			<section class="container">
 				<h2>Mis pacientes</h2>
+				<input type="text" name="filtrar" id="input-filtrar" placeholder="Filtrar">
 				<table>
 					<thead>
 						<tr>
@@ -69,7 +70,8 @@
 						</tr>
 					</tbody>
 				</table>
-
+				<span id="mensaje-ajax"></span>
+				<button id="boton-actualizar" class="boton bto-principal">Actualizar pacientes</button>
 			</section>
 			</br>
 			<section class="container">
@@ -101,4 +103,7 @@
 
 	<script src="js/imc.js"></script>
 	<script src="js/form.js"></script>
+	<script src="js/eliminar.js"></script>
+	<script src="js/filtrar.js"></script>
+	<script src="js/actualizar-pacientes.js"></script>
 </html>
